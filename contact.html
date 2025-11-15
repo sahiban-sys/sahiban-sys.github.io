@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7855306277218860"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHENK9KCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EMHENK9KCM');
+</script>
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>संपर्क करें - अध्ययन गाइड</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /*
+        =====================================
+        I. Global Setup & High-Advanced CSS
+        [... आपकी CSS ... ]
+        =====================================
+        */
+        :root {
+            --primary-color: #007BFF;
+            --secondary-color: #28a745;
+            --accent-color: #FFC107;
+            --youtube-color: #FF0000;
+            --dark-color: #1e3a8a;
+            --text-color: #1f2937;
+            --light-bg: #f3f6f9;
+            --white: #fff;
+            --border-radius: 12px;
+            --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            will-change: transform, opacity, box-shadow;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        a:hover {
+            color: var(--dark-color);
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        
+        .text-center { text-align: center; }
+
+        /*
+        =====================================
+        II. Header & Navigation (Pinnacle Glassmorphism)
+        =====================================
+        */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 75px; 
+            display: flex;
+            align-items: center;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 1.4rem;
+        }
+
+        /* कॉम्पैक्ट सर्च बार */
+        .header-search {
+            flex-grow: 1;
+            max-width: 350px;
+            display: none;
+            position: relative;
+        }
+
+        .header-search input {
+            width: 100%;
+            padding: 8px 15px 8px 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .header-search input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+        }
+
+        .header-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* मोबाइल मेनू टॉगल */
+        .nav-toggle {
+            display: block;
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            color: var(--dark-color);
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 75px; 
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            background-color: var(--dark-color);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            padding: 20px 0;
+            text-align: left;
+            border-bottom-left-radius: var(--border-radius);
+            animation: fadeInRight 0.3s ease-out;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            font-weight: 400;
+            font-size: 1rem;
+            padding: 12px 25px;
+            display: block;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-menu a.youtube-link {
+            color: var(--youtube-color);
+            font-weight: 600;
+            border-left: 3px solid var(--youtube-color);
+            margin-top: 10px;
+        }
+
+        .nav-menu a.youtube-link i { margin-right: 8px; }
+
+        .nav-menu a.youtube-link:hover {
+            background-color: rgba(255, 0, 0, 0.2);
+            border-left: 3px solid var(--white);
+            color: var(--white);
+            opacity: 1;
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--primary-color);
+            border-left: 3px solid var(--accent-color);
+            color: var(--white);
+            opacity: 1;
+        }
+
+        /*
+        =====================================
+        III. Content & Contact Form Styling
+        =====================================
+        */
+        .content-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .content-section h1 {
+            font-size: 2.8rem;
+            color: var(--dark-color);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        @media only screen and (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .contact-form-container {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .contact-form-container h2 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            padding: 20px;
+        }
+        
+        .contact-info h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-right: 15px;
+        }
+        
+        .info-item a {
+             color: var(--text-color);
+             font-weight: 500;
+        }
+        
+        .info-item a:hover {
+             color: var(--primary-color);
+        }
+
+
+        /*
+        =====================================
+        V. Footer (Copied from main file)
+        =====================================
+        */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 35px 25px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            margin: 0 15px;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+
+        /*
+        =====================================
+        VI. Media Queries (Desktop)
+        =====================================
+        */
+        
+        @media only screen and (min-width: 1024px) {
+            header {
+                height: 75px;
+            }
+            .header-search {
+                display: block;
+                flex-grow: 0.5;
+            }
+            .nav-toggle { display: none; }
+            .nav-menu {
+                display: flex; 
+                flex-direction: row;
+                position: static;
+                width: auto;
+                max-width: none;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                animation: none;
+            }
+
+            .nav-menu ul {
+                flex-direction: row;
+                gap: 25px;
+            }
+            
+            .nav-menu a {
+                color: var(--text-color);
+                padding: 5px 10px;
+                border-left: none;
+                font-weight: 500;
+            }
+
+            .nav-menu a:hover {
+                background-color: transparent;
+                border-bottom: 2px solid var(--primary-color);
+                color: var(--primary-color);
+            }
+            
+            .nav-menu a.youtube-link {
+                color: var(--youtube-color);
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                margin-top: 0;
+            }
+            .nav-menu a.youtube-link:hover {
+                color: var(--youtube-color);
+                background-color: transparent;
+                border-bottom: 2px solid var(--youtube-color);
+            }
+            
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i> अध्ययन<span>गाइड</span>
+            </a>
+            
+            
+
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">होम</a></li>
+                    <li><a href="classes.html">कक्षाएँ</a></li>
+                    <li><a href="model-papers.html">मॉडल पेपर्स</a></li>
+                    <li><a href="about-us.html">हमारे बारे में</a></li> 
+                    <li><a href="privacy.html">गोपनीयता नीति</a></li> 
+                    <li><a href="contact.html">संपर्क करें</a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank" class="youtube-link" rel="noopener noreferrer" aria-label="हमारा यूट्यूब चैनल">
+                        <i class="fab fa-youtube"></i> यूट्यूब
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <h1>📞 हमसे संपर्क करें</h1>
+                <p class="text-center">
+                    हम आपकी सहायता करने के लिए यहाँ हैं। चाहे आपको सामग्री, तकनीकी सहायता या साझेदारी से संबंधित कोई प्रश्न हो, आप नीचे दिए गए तरीकों से हमसे संपर्क कर सकते हैं।
+                </p>
+                
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <h2>हमें एक संदेश भेजें</h2>
+                        <form action="mailto:your_email@example.com" method="post" enctype="text/plain">
+                            <div class="form-group">
+                                <label for="name">आपका नाम (ज़रूरी)</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">आपका ईमेल (ज़रूरी)</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">विषय</label>
+                                <input type="text" id="subject" name="subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">आपका संदेश (ज़रूरी)</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-button">संदेश भेजें <i class="fas fa-paper-plane"></i></button>
+                            <p style="font-size: 0.85rem; margin-top: 10px; color: #6b7280;">(नोट: यह फॉर्म आपके डिफ़ॉल्ट ईमेल क्लाइंट का उपयोग करके संदेश भेजेगा।)</p>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h2>अन्य जानकारी</h2>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p style="font-weight: 600; color: var(--primary-color);">ईमेल</p>
+                                <a href="mailto:your_email@example.com">mdsahibanalan@gmail.com</a> 
+                                <p style="font-size: 0.85rem; color: #6b7280;">(आपकी सभी पूछताछ के लिए)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fab fa-youtube"></i>
+                            <div>
+                                <p style="font-weight: 600; color: var(--primary-color);">यूट्यूब चैनल</p>
+                                <a href="https://youtube.com/@mrsahiban08?si=_1nH0q4gbsQK8x8H" target="_blank" rel="noopener noreferrer">/MR SAHIBAN</a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <p style="font-weight: 600; color: var(--primary-color);">कार्य समय</p>
+                                <p>सोमवार से शुक्रवार: सुबह 9:00 बजे से शाम 5:00 बजे तक (IST)</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 अध्ययन गाइड। भविष्य की शिक्षा।</p>
+            <div class="footer-links">
+                <a href="about-us.html">हमारे बारे में</a>
+                <a href="privacy.html">गोपनीयता नीति</a> 
+                <a href="contact.html">संपर्क करें</a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="यूट्यूब"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', () => {
+            const isActive = navMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isActive);
+            navToggle.querySelector('i').className = isActive ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    navMenu.classList.remove('active');
+                    navToggle.querySelector('i').className = 'fas fa-bars';
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.querySelector('i').className = 'fas fa-bars';
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+</html>

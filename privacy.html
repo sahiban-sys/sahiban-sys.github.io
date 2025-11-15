@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7855306277218860"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHENK9KCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EMHENK9KCM');
+</script>
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>गोपनीयता नीति - अध्ययन गाइड</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /*
+        =====================================
+        I. Global Setup & High-Advanced CSS
+        =====================================
+        */
+        :root {
+            --primary-color: #007BFF; /* साफ़ प्राइमरी ब्लू */
+            --secondary-color: #28a745;
+            --accent-color: #FFC107; /* पीला/गोल्ड - जहाँ ज़रूरी हो */
+            --youtube-color: #FF0000;
+            --dark-color: #1e3a8a;
+            --text-color: #1f2937;
+            --light-bg: #f3f6f9;
+            --white: #fff;
+            --border-radius: 12px;
+            --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            will-change: transform, opacity, box-shadow;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        a:hover {
+            color: var(--dark-color);
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        
+        .text-center { text-align: center; }
+
+        /*
+        =====================================
+        II. Header & Navigation (Pinnacle Glassmorphism)
+        =====================================
+        */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 75px; 
+            display: flex;
+            align-items: center;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 1.4rem;
+        }
+
+        /* कॉम्पैक्ट सर्च बार */
+        .header-search {
+            flex-grow: 1;
+            max-width: 350px;
+            display: none;
+            position: relative;
+        }
+
+        .header-search input {
+            width: 100%;
+            padding: 8px 15px 8px 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .header-search input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+        }
+
+        .header-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* मोबाइल मेनू टॉगल */
+        .nav-toggle {
+            display: block;
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            color: var(--dark-color);
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 75px; 
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            background-color: var(--dark-color);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            padding: 20px 0;
+            text-align: left;
+            border-bottom-left-radius: var(--border-radius);
+            animation: fadeInRight 0.3s ease-out;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            font-weight: 400;
+            font-size: 1rem;
+            padding: 12px 25px;
+            display: block;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-menu a.youtube-link {
+            color: var(--youtube-color);
+            font-weight: 600;
+            border-left: 3px solid var(--youtube-color);
+            margin-top: 10px;
+        }
+
+        .nav-menu a.youtube-link i { margin-right: 8px; }
+
+        .nav-menu a.youtube-link:hover {
+            background-color: rgba(255, 0, 0, 0.2);
+            border-left: 3px solid var(--white);
+            color: var(--white);
+            opacity: 1;
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--primary-color);
+            border-left: 3px solid var(--accent-color);
+            color: var(--white);
+            opacity: 1;
+        }
+
+        /*
+        =====================================
+        III. Content Page Styling (New Section)
+        =====================================
+        */
+        .content-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .content-section h1 {
+            font-size: 2.8rem;
+            color: var(--dark-color);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 5px;
+        }
+        
+        .content-section p, .content-section ul {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #4b5563;
+        }
+        
+        .content-section ul {
+            list-style: disc;
+            margin-left: 30px;
+            padding-left: 10px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+        
+        /* 💡 एडसेंस फोकस */
+        .adsense-focus {
+            background-color: #ffeccf;
+            border-left: 5px solid var(--accent-color);
+            padding: 15px;
+            margin: 25px 0;
+            font-weight: 500;
+            color: #7c5e10;
+        }
+
+
+        /*
+        =====================================
+        V. Footer (Copied from main file)
+        =====================================
+        */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 35px 25px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            margin: 0 15px;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+
+        /*
+        =====================================
+        VI. Media Queries (Desktop)
+        =====================================
+        */
+        
+        @media only screen and (min-width: 1024px) {
+            header {
+                height: 75px;
+            }
+            .header-search {
+                display: block;
+                flex-grow: 0.5;
+            }
+            .nav-toggle { display: none; }
+            .nav-menu {
+                display: flex; 
+                flex-direction: row;
+                position: static;
+                width: auto;
+                max-width: none;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                animation: none;
+            }
+
+            .nav-menu ul {
+                flex-direction: row;
+                gap: 25px;
+            }
+            
+            .nav-menu a {
+                color: var(--text-color);
+                padding: 5px 10px;
+                border-left: none;
+                font-weight: 500;
+            }
+
+            .nav-menu a:hover {
+                background-color: transparent;
+                border-bottom: 2px solid var(--primary-color);
+                color: var(--primary-color);
+            }
+            
+            .nav-menu a.youtube-link {
+                color: var(--youtube-color);
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                margin-top: 0;
+            }
+            .nav-menu a.youtube-link:hover {
+                color: var(--youtube-color);
+                background-color: transparent;
+                border-bottom: 2px solid var(--youtube-color);
+            }
+            
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-graduation-cap"></i> अध्ययन<span>गाइड</span>
+            </a>
+            
+            
+
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">होम</a></li>
+                    <li><a href="classes.html">कक्षाएँ</a></li>
+                    <li><a href="model-papers.html">मॉडल पेपर्स</a></li>
+                    <li><a href="about-us.html">हमारे बारे में</a></li> 
+                    <li><a href="privacy.html">गोपनीयता नीति</a></li> 
+                    <li><a href="contact.html">संपर्क करें</a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank" class="youtube-link" rel="noopener noreferrer" aria-label="हमारा यूट्यूब चैनल">
+                        <i class="fab fa-youtube"></i> यूट्यूब
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <h1>📚 गोपनीयता नीति</h1>
+                <p>अध्ययन गाइड पर, हमारी मुख्य प्राथमिकताओं में से एक हमारे आगंतुकों की गोपनीयता है। इस गोपनीयता नीति दस्तावेज़ में अध्ययन गाइड द्वारा एकत्रित और दर्ज की गई जानकारी के प्रकार शामिल हैं और हम इसका उपयोग कैसे करते हैं।</p>
+
+                <h2>1. जानकारी जो हम एकत्र करते हैं</h2>
+                <p>हम आपकी व्यक्तिगत रूप से पहचान योग्य जानकारी (Personal Identifiable Information) तब तक एकत्र नहीं करते जब तक आप हमें स्वेच्छा से प्रदान नहीं करते (जैसे संपर्क फ़ॉर्म के माध्यम से)। हालांकि, सभी वेबसाइटों की तरह, हम कुछ गैर-व्यक्तिगत जानकारी स्वचालित रूप से एकत्र करते हैं:</p>
+                <ul>
+                    <li>**लॉग फ़ाइलें:** इनमें इंटरनेट प्रोटोकॉल (IP) पते, ब्राउज़र का प्रकार, इंटरनेट सेवा प्रदाता (ISP), तारीख और समय स्टैम्प, संदर्भ/निकास पृष्ठ, और संभवतः क्लिक की संख्या शामिल है।</li>
+                    <li>**उपयोग डेटा:** इसमें यह जानकारी शामिल होती है कि आप हमारी वेबसाइट का उपयोग कैसे करते हैं (उदाहरण: कौन से पेज देखे गए, कितनी देर तक)।</li>
+                </ul>
+
+                <h2>2. हम आपकी जानकारी का उपयोग कैसे करते हैं</h2>
+                <p>हम एकत्रित जानकारी का उपयोग निम्न उद्देश्यों के लिए करते हैं:</p>
+                <ul>
+                    <li>अपनी वेबसाइट प्रदान करने, संचालित करने और बनाए रखने के लिए।</li>
+                    <li>अपनी वेबसाइट को सुधारने, वैयक्तिकृत करने और विस्तृत करने के लिए।</li>
+                    <li>यह समझने और विश्लेषण करने के लिए कि आप हमारी वेबसाइट का उपयोग कैसे करते हैं।</li>
+                    <li>नए उत्पादों, सेवाओं, सुविधाओं और कार्यक्षमताओं को विकसित करने के लिए।</li>
+                    <li>आपके साथ सीधे या हमारे किसी भागीदार के माध्यम से संवाद करने के लिए।</li>
+                </ul>
+
+                <h2>3. गूगल एडसेंस (Google AdSense) और कुकीज़ (Cookies) 🍪</h2>
+                <div class="adsense-focus">
+                    **Google AdSense आवश्यकता (AdSense Requirement):** यह सेक्शन AdSense की मंजूरी के लिए अत्यंत महत्वपूर्ण है।
+                </div>
+                <p>**Google AdSense** हमारी साइट पर तृतीय-पक्ष विक्रेता है। यह हमारी साइट के आगंतुकों को उनकी हमारी और इंटरनेट पर अन्य साइटों की यात्रा के आधार पर विज्ञापन परोसने के लिए **DART कुकीज़** का उपयोग करता है।</p>
+                <p>आप निम्नलिखित URL पर Google विज्ञापन और सामग्री नेटवर्क गोपनीयता नीति पर जाकर DART कुकीज़ के उपयोग से बाहर निकलने का विकल्प चुन सकते हैं: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">https://policies.google.com/technologies/ads</a></p>
+                
+                <h2>4. तृतीय-पक्ष गोपनीयता नीतियां</h2>
+                <p>अध्ययन गाइड की गोपनीयता नीति अन्य विज्ञापनदाताओं या वेबसाइटों पर लागू नहीं होती है। इसलिए हम आपको सलाह दे रहे हैं कि अधिक विस्तृत जानकारी के लिए इन तृतीय-पक्ष विज्ञापन सर्वरों की संबंधित गोपनीयता नीतियों से परामर्श करें।</p>
+
+                <h2>5. बच्चों की जानकारी (Children's Information)</h2>
+                <p>हमारी प्राथमिकता का एक अन्य हिस्सा इंटरनेट का उपयोग करते समय बच्चों के लिए सुरक्षा जोड़ना है। हम माता-पिता और अभिभावकों को उनकी ऑनलाइन गतिविधि का निरीक्षण करने, उसमें भाग लेने और/या मार्गदर्शन करने के लिए प्रोत्साहित करते हैं।</p>
+                <p>**अध्ययन गाइड** जानबूझकर 13 साल से कम उम्र के बच्चों से कोई व्यक्तिगत पहचान योग्य जानकारी एकत्र नहीं करता है। यदि आप सोचते हैं कि आपके बच्चे ने हमारी वेबसाइट पर इस प्रकार की जानकारी प्रदान की है, तो हम आपको तुरंत हमसे संपर्क करने के लिए दृढ़ता से प्रोत्साहित करते हैं और हम अपने रिकॉर्ड से ऐसी जानकारी को तुरंत हटाने की पूरी कोशिश करेंगे।</p>
+
+                <h2>6. केवल ऑनलाइन गोपनीयता नीति</h2>
+                <p>यह गोपनीयता नीति केवल हमारी ऑनलाइन गतिविधियों पर लागू होती है और हमारी वेबसाइट पर आने वाले आगंतुकों के लिए उस जानकारी के संबंध में मान्य है जिसे उन्होंने अध्ययन गाइड में साझा किया और/या एकत्र किया। यह नीति इस वेबसाइट के अलावा ऑफ़लाइन या अन्य चैनलों के माध्यम से एकत्र की गई किसी भी जानकारी पर लागू नहीं होती है।</p>
+                
+                <h2>7. सहमति</h2>
+                <p>हमारी वेबसाइट का उपयोग करके, आप हमारी गोपनीयता नीति पर सहमति देते हैं और इसके नियमों और शर्तों से सहमत होते हैं।</p>
+                
+                <p style="margin-top: 30px; color: var(--primary-color); font-weight: 500;">
+                    **यह नीति अंतिम बार: 13 नवंबर, 2025 को अपडेट की गई।**
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 अध्ययन गाइड। भविष्य की शिक्षा।</p>
+            <div class="footer-links">
+                <a href="about-us.html">हमारे बारे में</a>
+                <a href="privacy.html">गोपनीयता नीति</a> 
+                <a href="contact.html">संपर्क करें</a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="यूट्यूब"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', () => {
+            const isActive = navMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isActive);
+            navToggle.querySelector('i').className = isActive ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    navMenu.classList.remove('active');
+                    navToggle.querySelector('i').className = 'fas fa-bars';
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.querySelector('i').className = 'fas fa-bars';
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+</html>
