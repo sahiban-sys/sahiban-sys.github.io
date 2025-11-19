@@ -486,7 +486,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         color: #7f8c8d;
         border-top: 1px dashed #bdc3c7;
         padding-top: 15px;
-    }
+   /* --- सेक्शन को अलग दिखाने और हाईलाइट करने के लिए नया CSS कोड --- */
+
+/* 1. अपडेट सेक्शन (Update Section) को थोड़ी दूरी और हल्का बॉर्डर देना */
+.update-section {
+    margin-bottom: 25px; /* नीचे की ओर खाली जगह */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* 2. तत्काल सूचना सेक्शन (Post Header) को हाईलाइट करना */
+.post-header {
+    background-color: #fff0f0; /* हल्का गुलाबी/लाल बैकग्राउंड */
+    border: 2px solid #ff4444; /* लाल बॉर्डर */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0; /* ऊपर और नीचे ज्यादा खाली जगह */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* हल्का शैडो देना */
+}
+
+/* 3. जानकारी सेक्शन (Info Section) को ऊपरी दूरी देना */
+.info-section {
+    margin-top: 30px;
+    padding: 15px 0;
+}
+
+/* 4. हाईलाइटेड सेक्शन के अंदर की H1 हेडिंग को स्टाइल करना */
+.post-header h1 {
+    color: #cc0000; /* हेडिंग का रंग गहरा लाल करना */
+    font-size: 26px; /* फ़ॉन्ट साइज़ बढ़ाना */
+    margin-top: 0; 
+    margin-bottom: 10px; /* नीचे थोड़ी जगह */
+    border-bottom: 1px dashed #ff4444; /* हेडिंग के नीचे हल्की डैश वाली लाइन */
+    padding-bottom: 10px;
+ }
 </style>
 <div class="adhyayan-post">
     <div class="container">
@@ -1110,6 +1144,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>
+
 
 
 
