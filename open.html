@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>खुशी साइबर कैफे | K.K. Point</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    
+    <style>
+        :root {
+            --header-red: #2f7bd3; /* गहरा लाल रंग */
+            --accent-yellow: #ffeb3b;
+            --white: #ffffff;
+            /* सेवाओं के अलग-अलग रंग */
+            --color-1: #e91e63; --color-2: #2196f3; --color-3: #4caf50;
+            --color-4: #ff9800; --color-5: #9c27b0; --color-6: #795548;
+            --color-7: #00bcd4; --color-8: #607d8b; --color-9: #ff5722;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Hind', sans-serif; }
+        body { background-color: #f0f2f5; }
+
+        /* --- Header: लाल रंग में --- */
+        header {
+            background: var(--header-red);
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-box { display: flex; align-items: center; gap: 10px; color: white; }
+        .logo-box i { font-size: 1.8rem; color: var(--accent-yellow); }
+        .logo-text { font-size: 1.4rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+        .nav-menu { display: flex; list-style: none; align-items: center; gap: 20px; }
+        .nav-menu a { text-decoration: none; color: white; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+        .nav-menu a:hover { color: var(--accent-yellow); }
+
+        /* लॉगिन बटन */
+        .login-btn {
+            background: var(--accent-yellow);
+            color: #333 !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .login-btn:hover { transform: scale(1.05); background: white; }
+
+        /* --- Hero Section: साइबर कैफे इमेज के साथ --- */
+        .hero {
+            height: 75vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1500') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            border-bottom: 8px solid var(--header-red);
+        }
+
+        .hero h1 { font-size: 4.5rem; font-weight: 900; color: var(--white); text-shadow: 3px 3px 10px rgba(0,0,0,0.5); }
+        .hero h1 span { color: var(--accent-yellow); }
+        .kk-point-tag { font-size: 2rem; background: var(--header-red); padding: 5px 40px; border-radius: 50px; font-weight: 700; margin: 15px 0; border: 2px solid var(--accent-yellow); }
+        .hero p { font-size: 1.2rem; font-weight: 400; max-width: 800px; color: #ddd; }
+
+        /* --- Services: रंग-बिरंगा ग्रिड --- */
+        .container { padding: 50px 5%; max-width: 1400px; margin: auto; }
+        .section-head { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #333; font-weight: 800; border-bottom: 4px solid var(--header-red); display: inline-block; padding-bottom: 5px; }
+
+        .services-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .s-card {
+            padding: 30px 15px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .s-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .s-card i { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .s-card p { font-family: 'Hind', sans-serif; font-size: 1.1rem; }
+
+        /* कार्ड्स के अलग-अलग रंग */
+        .c1 { background: var(--color-1); } .c2 { background: var(--color-2); }
+        .c3 { background: var(--color-3); } .c4 { background: var(--color-4); }
+        .c5 { background: var(--color-5); } .c6 { background: var(--color-6); }
+        .c7 { background: var(--color-7); } .c8 { background: var(--color-8); }
+        .c9 { background: var(--color-9); } .c10 { background: #2c3e50; }
+
+        /* --- Footer --- */
+        footer {
+            background: #222;
+            color: white;
+            padding: 50px 5% 20px;
+            text-align: center;
+        }
+        .foot-info { margin-bottom: 30px; }
+        .foot-info h3 { color: var(--accent-yellow); font-size: 1.5rem; margin-bottom: 10px; }
+        .foot-info p { color: #bbb; margin-bottom: 5px; font-size: 1.1rem; }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* मोबाइल पर मेनू छोटा करने के लिए */
+            .hero h1 { font-size: 2.5rem; }
+            .kk-point-tag { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-box">
+            <i class="fas fa-desktop"></i>
+            <div class="logo-text">खुशी साइबर कैफे</div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#">होम</a></li>
+            <li><a href="#">हमारे बारे में</a></li>
+            <li><a href="#">सेवाएं</a></li>
+            <li><a href="#">गोपनीयता</a></li>
+            <li><a href="#" class="login-btn">लॉगिन</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <h1>खुशी <span>साइबर कैफे</span></h1>
+        <div class="kk-point-tag">K.K. Point</div>
+        <p>धमधाह का सबसे तेज़ और भरोसेमंद डिजिटल सेवा केंद्र। सभी ऑनलाइन कार्य यहाँ किए जाते हैं।</p>
+    </section>
+
+    <div class="container">
+        <center><h2 class="section-head">उपलब्ध सेवाएं</h2></center>
+        <div class="services-wrapper">
+            <div class="s-card c1"><i class="fas fa-file-alt"></i><p>ऑनलाइन फॉर्म</p></div>
+            <div class="s-card c2"><i class="fas fa-id-card"></i><p>पैन कार्ड</p></div>
+            <div class="s-card c3"><i class="fas fa-address-card"></i><p>वोटर कार्ड</p></div>
+            <div class="s-card c4"><i class="fas fa-passport"></i><p>पासपोर्ट</p></div>
+            <div class="s-card c5"><i class="fas fa-file-invoice"></i><p>भू लगान रसीद</p></div>
+            <div class="s-card c6"><i class="fas fa-users"></i><p>जाति/आय/निवास</p></div>
+            <div class="s-card c7"><i class="fas fa-mobile-alt"></i><p>रिपेयरिंग</p></div>
+            <div class="s-card c8"><i class="fas fa-fingerprint"></i><p>e-KYC</p></div>
+            <div class="s-card c9"><i class="fas fa-university"></i><p>मनी ट्रांसफर</p></div>
+            <div class="s-card c10"><i class="fas fa-print"></i><p>फोटोकॉपी</p></div>
+            <div class="s-card c1"><i class="fas fa-train"></i><p>रेलवे टिकट</p></div>
+            <div class="s-card c2"><i class="fas fa-lightbulb"></i><p>बिजली बिल</p></div>
+            <div class="s-card c3"><i class="fas fa-tractor"></i><p>किसान पंजीकरण</p></div>
+            <div class="s-card c4"><i class="fas fa-camera"></i><p>फोटो ग्राफी</p></div>
+            <div class="s-card c5"><i class="fas fa-exchange-alt"></i><p>दाखिल खारिज</p></div>
+            <div class="s-card c6"><i class="fas fa-download"></i><p>आधार डाउनलोड</p></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="foot-info">
+            <h3>प्रोपराइटर: अमित कुमार</h3>
+            <p><i class="fas fa-phone"></i> मोबाइल: 8409390578</p>
+            <p><i class="fas fa-map-marker-alt"></i> पता: हाट रोड, धमधाह, पूर्णिया</p>
+        </div>
+        <hr style="opacity: 0.2; margin-bottom: 20px;">
+        <p style="font-size: 0.9rem; color: #777;">&copy; 2026 खुशी साइबर कैफे - Developed by Sahiban</p>
+    </footer>
+
+</body>
+</html>
